@@ -108,8 +108,15 @@ string longestPalindrome(string s) {
     int mx = 0, id = 0, resLen = 0, resCenter = 0;
     for (int i = 1; i < t.size(); ++i) {
         p[i] = mx > i ? min(p[2 * id - i], mx - i) : 1;
-        while (t[i + p[i]] == t[i - p[i]]) ++p[i];
-        if (mx < i + p[i]) {
+        while (t[i + p[i]] == t[i - p[i]]){
+        	/**
+        	 * Here is the reason why we add '$'.
+        	 * ( '#' will equals '#' at the beginning )
+        	 * But we have '\0' at last, it will be different from all characters.
+        	 */
+        	++p[i];
+
+        }        if (mx < i + p[i]) {
             mx = i + p[i];
             id = i;
         }
@@ -121,4 +128,3 @@ string longestPalindrome(string s) {
     return s.substr((resCenter - resLen) / 2, resLen - 1);
 
 }
- 
