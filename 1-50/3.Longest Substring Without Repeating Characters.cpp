@@ -1,8 +1,8 @@
 int lengthOfLongestSubstring(string s) {
 	/*
-	 * @ using hashmap recording the char which
+	 *  using hashmap recording the char which
 	 *  between the pointer left & right.
-	 * @ when find a char has been recorded in
+	 *  when find a char has been recorded in
 	 *  map, clean the map and update the max length.
 	 *  Update the new substring index at the char first
 	 *  disappeared position+1. 
