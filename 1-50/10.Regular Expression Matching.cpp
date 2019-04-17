@@ -9,7 +9,7 @@ typedef opt (*addedge)(struct Graph g, int i);
 struct Graph{
 	int E;
 	int V;
-	int *adj;
+	int **adj;
 	int *marked;
 	opt opt;
 }
