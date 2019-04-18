@@ -49,21 +49,117 @@ bool isMatch(string s, string p) {
 }
 
 /*--------------------2nd--------------------*/
-Non-Deterministic Finite Automata solution
 
-typedef opt (*addedge)(struct Graph g, int i);
-struct Graph{
-	int E;
-	int V;
-	int **adj;
-	int *marked;
-	opt opt;
+class Graph{
+private:
+	const int V;           
+    int E;                 
+    vector<vector<int>> adj(V,vector<int>(0));    
+public: 
+	Graph(int V) {     
+        this.V = V;
+        this.E = 0;
+    }
+    int V() {
+        return V;
+    }
+    int E() {
+        return E;
+    }
+    void addEdge(int v, int w) {
+        adj[v].push_back(w);
+        E++;
+    }
+    int* adj(int v) {
+        return adj[v];
+    }
 }
 
-void (*dfs)(struct Graph p, int start){
-	Graph.marked[start] = true;
-	for(int i = 0; i < Graph.V; ++i){
-		if(!Graph.marked[i])
-			dfs(p,i);
-	}
+class DFS{
+private: 
+	int *marked;  
+    int count;         
+public:
+	DFS(Graph G, int s) {
+        marked = (int*)malloc(sizeof(int)*G.V());
+        dfs(G, s);
+    }
+    DFS(Graph G, int* adj_v) {
+        int marked[G.V()];
+        for (int v : adj_v) {
+            if (!marked[v]) dfs(G, v);
+        }
+    }
+    void dfs(Graph G, int v) { 
+        marked[v] = true;
+        for (int w : G.adj(v)) {
+            if (!marked[w]) dfs(G, w);
+        }
+    }
+    int marked(int v) {
+        return marked[v];
+    }
+    ~DFS(){
+    	free(marked);
+    }
 }
+
+class Solution {
+    int m;
+    Graph graph;    
+public:
+ int isMatch(String s, String p) {
+    if(p.length() == 0 && s.length() == 0)return true;
+    if(p.length() == 0)return false;
+    m=p.length();
+    graph =Graph(m+1);
+    for(int i=0;i<m;i++) {
+        if(p[i] == '*') {
+            graph.addEdge(i, i-1);
+            graph.addEdge(i-1, i);
+            graph.addEdge(i, i+1);
+        }
+    }
+
+    vector<int> pc;
+    DFS dfs = DFS(graph, 0);
+    for(int i=0;i<graph.V();i++) {
+        if(dfs.marked(i)) pc.add(i);
+    }
+
+    if(s.length() == 0){
+        for(int v:pc)if(v == m) return true;
+    }
+
+    for(int i=0;i<s.length();i++){
+        vector<int> match;
+        for(int v : pc){
+            if (v == m) continue;
+            if(p[v] == s[i] || p[v] == '.'){
+                match.add(v+1);
+            }
+        }
+        pc.clear();
+        dfs = new DFS(graph, match);
+        for(int v=0;v<graph.V();v++) {
+            if(dfs.marked(v)) pc.push_back(v);
+        }
+    }
+
+    for(int v:pc)if(v == m) return true;
+    return false;
+    }
+}
+
+int main(){
+	int a = Solution.isMatch("aa","a*");
+	cout <<a;
+	return 0;
+}
+/*
+ * Non-Deterministic Finite Automata solution
+ * Use Thompson algorithm, Once NFA created, lookup will very fast,
+ * especially for long string.
+ *
+ * Then first step is build NFA machine.
+ */
