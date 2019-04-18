@@ -47,9 +47,8 @@ bool isMatch(string s, string p) {
         }
     }return dp[m][n];
 }
+
 /*--------------------2nd--------------------*/
-dp solution
-/*--------------------1st--------------------*/
 Non-Deterministic Finite Automata solution
 
 typedef opt (*addedge)(struct Graph g, int i);
