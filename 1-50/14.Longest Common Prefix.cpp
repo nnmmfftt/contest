@@ -56,6 +56,7 @@ void insert(string s){
 }
 int search(string s,string ret){
 	Trie *p = root;
+	int n = ret.size();
 	bool find_val = 0;
 	for(int i = 0; i < s.size(); ++i){
 		int t = s[i] -'a';
@@ -71,7 +72,7 @@ int search(string s,string ret){
 }
 
 void init(){
-    root = new Trie;
+    root = new trie;
     root->count = 0;
     for(int i = 0;i < 26;++ i){
         root->next[i] = NULL;
@@ -90,3 +91,4 @@ string longestCommonPrefix(vector<string>& strs) {
 	if (!search(strs[0],ret)) return ans = "";
   return ans;
 }
+
