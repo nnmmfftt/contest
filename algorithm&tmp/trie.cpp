@@ -1,23 +1,25 @@
-#include<bits/stdc++.h>
+#include<stdlib.h>
+#include<iostream>
+#include<vector>
 using namespace std;
-struct trie{
+typedef struct trie {
 	int val;
-	trie *next[26];
-	trie(){
+	trie* next[26];
+	trie() {
 		val = 0;
 		memset(next, 0, sizeof(next));
 	}
 }Trie;
 
-int trie_insert_str(Trie *root, string s){
+int trie_insert_str(Trie *root, string s) {
 	int len = s.size();
-	if(len == 0)
-		return ;
-	for(int i = 0; i < len; ++i){
-		if(root->next[s[i] -'a'] == NULL){
+	if (len == 0)
+		return 0;
+	for (int i = 0; i < len; ++i) {
+		if (root->next[s[i] - 'a'] == NULL) {
 			root->next[s[i] - 'a'] = new struct trie;
 		}
-		if(!root->next[s[i] - 'a'])
+		if (!root->next[s[i] - 'a'])
 			goto out;
 		root = root->next[s[i] - 'a'];
 		root->val++;
@@ -27,74 +29,75 @@ out:
 	return -1;
 }
 
-string max_match(Trie *root, string s){
+string max_match(Trie* root, string s) {
 	int len = s.size();
 	string ret;
-	if(len == 0)
+	if (len == 0)
 		return 0;
-	for(int i = 0; i < len; ++i){
-		if(root->next[s[i] - 'a'] == NULL)
-			return false;
+	for (int i = 0; i < len; ++i) {
+		
 		ret = s.substr(0, root->next[s[i] - 'a']->val);
+		if (root->next[s[i] - 'a'] == NULL)
+			return false;
 		root = root->next[s[i] - 'a'];
 	}
-	return true;
+	return ret;
 }
-int trie_max_prefix(Trie *root, string s){
+int trie_max_prefix(Trie* root, string s) {
 	int len = s.size();
-	if(len == 0)
+	if (len == 0)
 		return 0;
-	for(int i = 0; i < len; ++i){
-		if(root->next[s[i]-'a'] ==NULL)
+	for (int i = 0; i < len; ++i) {
+		if (root->next[s[i] - 'a'] == NULL)
 			return 0;
-		root = root->next[s[i] -'a'];
+		root = root->next[s[i] - 'a'];
 	}
 	return root->val;
 }
 
-int match(Trie *root, string s){
+int match(Trie* root, string s) {
 	int len = s.size();
-	if(len == 0)
+	if (len == 0)
 		return 0;
-	for(int i = 0; i <len; ++i){
-		if(root->next[s[i] - 'a'] == NULL)
+	for (int i = 0; i < len; ++i) {
+		if (root->next[s[i] - 'a'] == NULL)
 			return false;
 		else root = root->next[s[i] - 'a'];
 	}
 	return true;
 }
 
-int trie_delete_str(Trie *root, string s){
+int trie_delete_str(Trie* root, string s) {
 	int len = s.size();
-	if(len == 0) return 0;
-	for(int i = 0; i < len; ++i){
-		if(root->next[s[i] - 'a'] == NULL){
-			return;
+	if (len == 0) return 0;
+	for (int i = 0; i < len; ++i) {
+		if (root->next[s[i] - 'a'] == NULL) {
+			return -1;
 		}
-		root = root->next[s[i] -'a'];
+		root = root->next[s[i] - 'a'];
 		root->val--;
-		if(root->val == 0){
+		if (root->val == 0) {
 			delete root;
 			root = NULL;
 		}
 	}return 0;
 }
 
-int main(){
-	trie *root = new Trie();
-	vector<string> strs = {"banana","ban","bank","abort","abs"};
-	for(int i = 0; i < strs.size(); ++i){
+int main() {
+	trie* root = new Trie();
+	vector<string> strs = { "banana","ban","bank","abort","abs" };
+	for (int i = 0; i < strs.size(); ++i) {
 		int rc = trie_insert_str(root, strs[i]);
-		if(rc != -1)
+		if (rc != -1)
 			continue;
 		else break;
 	}
 	int m;
 	cin >> m;
-	while(m--){
+	while (m--) {
 		string stmp;
-		cin >>stmp;
-		cout <<trie_max_prefix(stmp)<<endl;
+		cin >> stmp;
+		cout << trie_max_prefix(root,stmp) << endl;
 	}
 	return 0;
 }
