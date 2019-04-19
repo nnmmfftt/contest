@@ -24,7 +24,7 @@ string intToRoman(int num) {
 	 */
     array<string,7> roman{"I","V","X","L","C","D","M"};
     vector<string> str(4);
-    for(int i=0,j=0; i<roman.size(); i+=2,j++){
+    for(int i=0,j=0; i<roman.size(); xi+=2,j++){
         int tmp = num%10;
         if(tmp%5==4){
             str[j] = roman[i]+roman[i+1+tmp/5];
