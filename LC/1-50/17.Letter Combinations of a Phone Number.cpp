@@ -45,6 +45,26 @@ vector<string> letterCombinations(string digits) {
 	} sort(ret.begin(),ret.end());
       return ret;
 }
+/*--------------------1st--------------------*/
+vector<string> letterCombinations(string digits) {
+	/*
+	 * Now, the code may make us confused, try to make the code concise.
+	 * Turn the hashmap into string vector, etc.
+	 */
+	vector<string> ret{""};
+	if(digits.size() == 0)
+		return ret;
+	vector<string> letter_map{"","","abc","def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+	for( auto i : digits){
+		vector<string> tmp;
+		for(auot j : ret){
+			for((auto k : letter_map[i - '0']))
+				tmp .push_back(j+k);
+			ret = tmp;
+		}
+	}return ret;
+
+}
 /*--------------------2nd--------------------*/
 void bfs(vector<string> &ret, string str, string &digits, unordered_map<char, string> &m, int k);
 vector<string> letterCombinations(string digits) {
