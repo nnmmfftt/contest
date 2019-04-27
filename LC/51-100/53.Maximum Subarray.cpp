@@ -102,3 +102,59 @@ public:
         }return maxsum;
     }
 };
+/*--------------------3rd--------------------*/
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        /*
+         * Check the dp code above, the dp array actually only use one time in a loop.
+         * Then use a integer value instead of dp array.
+         */
+        int ret = 0x80000000;
+        int val_sum = 0;
+        for(auto i :nums){
+            val_sum = val_sum +i > i? val_sum +i :i;
+            ret  = ret > val_sum? ret: val_sum;
+        }
+        return ret;
+    }
+};
+
+/*--------------------4nd--------------------*/
+class Solution {
+public:
+    int merge_maxSubArray(vector<int> &nums, int left, int right);
+
+    int maxSubArray(vector<int>& nums) {
+        /*
+         * The divide and conquer version is  O(nlogn), and looks like a mergesort,
+         * divide every array and find the max value, then put the two subarray together
+         * and find the max value of the connected subarray.
+         *
+         */
+        return merge_maxSubArray(nums, 0, nums.size()-1);
+    }
+
+
+    int merge_maxSubArray(vector<int> &nums, int left, int right){
+        if(left >=right){
+            return nums[left];
+        }
+        int mid = left+(right-left)/2;
+        int leftmax = merge_maxSubArray(nums, left, mid);
+        int rightmax= merge_maxSubArray(nums, mid+1,right);
+        int max_sum_left = 0x80000000;
+        int tmp1 = 0;
+        for(int i = mid; i >= left; --i){
+            tmp1 += nums[i];
+            max_sum_left = max_sum_left > tmp1? max_sum_left:tmp1;
+        }
+        int max_sum_right = 0x80000000;
+        int tmp2 = 0;
+        for(int i = mid+1; i <= right; ++i){
+            tmp2 += nums[i];
+            max_sum_right = max_sum_right>tmp2?max_sum_right:tmp2;
+        }
+        return max({max_sum_right+max_sum_left, leftmax, rightmax});
+    }
+};
