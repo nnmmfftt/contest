@@ -1,17 +1,3 @@
-#include<bits/stdc++.h>
-
-using namespace std;
-
-int main(){
-	vector<int> v = {1,1,2};
-	set<int> s;
-	for(auto i : v){
-		s.insert(i);
-	}
-	vector<int> ret;
-	for(auto i: s){
-		ret.push_back(i);
-
 /*--------------------1st--------------------*/
 class Solution {
 public:
