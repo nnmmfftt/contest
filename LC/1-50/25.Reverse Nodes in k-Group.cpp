@@ -6,6 +6,7 @@
  *     ListNode(int x) : val(x), next(NULL) {}
  * };
  */
+/*--------------------1st--------------------*/
 class Solution {
 public:
     ListNode* reverseKGroup(ListNode* head, int k) {
@@ -39,6 +40,8 @@ public:
         return rethead->next;
     }
 };
+
+/*--------------------2nd--------------------*/
 class Solution {
 public:
 	ListNode *reverseall(ListNode *head){
