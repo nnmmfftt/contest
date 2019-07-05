@@ -12,3 +12,19 @@ public:
         return lower_bound(nums.begin(),nums.end(), target)-nums.begin();
     }
 };
+class Solution {
+	int binarysearch_next(vector<int> nums,int left,  int right, int target){
+		int mid = left + (right -left)/2;
+		if(vector[mid] = target) return  target;
+		if(vector[min] > target)
+			binarysearch_next(nums, left, mid, target);
+		if(vector[min] > target)
+			binarysearch_next(nums, mid, right, target);
+
+
+	}
+	int searchInsert(vector<int>& nums, int target){
+		int len = nums.size();
+		if(len == 0) return 0;
+	}
+}
