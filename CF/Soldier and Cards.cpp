@@ -56,13 +56,13 @@ int movedeq(deque<int>& q1, deque<int>& q2) {
 
 }
 
-//int main() {
-//	deque<int> q1, q2;
-//	init_sacIO(q1, q2);
-//	int count = movedeq(q1, q2);
-//	cout << count;
-//	getchar();
-//	getchar();
-//	return 0;
-//	
-//}
+int main() {
+	deque<int> q1, q2;
+	init_sacIO(q1, q2);
+	int count = movedeq(q1, q2);
+	cout << count;
+	getchar();
+	getchar();
+	return 0;
+	
+}

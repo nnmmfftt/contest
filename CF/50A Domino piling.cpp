@@ -12,11 +12,9 @@ int Domino_piling(int m, int n) {
 }
 
 
-//int main() {
-//	//int m, n;
-//	//cin >> m >> n;
-//	//cout << Domino_piling(m, n);
-//	//getchar();
-//	//getchar();
-//	//return 0;
-//}
+int main() {
+	int m, n;
+	cin >> m >> n;
+	cout << Domino_piling(m, n);
+	return 0;
+}

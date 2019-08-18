@@ -8,12 +8,10 @@ char* captword(char* str) {
 	}return str;
 }
 
-//int main() {
-//	char* p = (char*)malloc(sizeof(char) * 1000);
-//	cin >> p;
-//	captword(p);
-//	cout << p;
-//	getchar();
-//	getchar();
-//	return 0;
-//}
+int main() {
+	char* p = (char*)malloc(sizeof(char) * 1000);
+	cin >> p;
+	captword(p);
+	cout << p;
+	return 0;
+}

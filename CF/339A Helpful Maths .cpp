@@ -18,13 +18,11 @@ string helpful_math(char* str) {
 	return s;
 	
 }
-//int main() {
-//	char* p = (char*)malloc(sizeof(char) * 150);
-//	cin >> p;
-//	string s = helpful_math(p);
-//	s = s.substr(0, s.size() - 1);
-//	cout << s;
-//	getchar();
-//	getchar();
-//	return 0;
-//}
+int main() {
+	char* p = (char*)malloc(sizeof(char) * 150);
+	cin >> p;
+	string s = helpful_math(p);
+	s = s.substr(0, s.size() - 1);
+	cout << s;
+	return 0;
+}

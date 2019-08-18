@@ -20,11 +20,9 @@ int initvec_and_computedis(vector<vector<int>>& vec) {
 	return abs(r-2)+abs(c-2);
 }
 
-//int main() {
-//	vector<vector<int>> vec;
-//	int ret = initvec_and_computedis(vec);
-//	cout << ret;
-//	getchar();
-//	getchar();
-//	return 0;
-//}
+int main() {
+	vector<vector<int>> vec;
+	int ret = initvec_and_computedis(vec);
+	cout << ret;
+	return 0;
+}

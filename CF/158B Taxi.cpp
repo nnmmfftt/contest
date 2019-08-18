@@ -43,13 +43,13 @@ int solve_taxi(vector<int>& vec) {
 	return ret+1;
 }
 
-//int main() {
-//	vector<int> vec;
-//	vec = init_taxi_io();
-//	int ret = solve_taxi(vec);
-//	cout << ret;
-//	getchar();
-//	getchar();
-//	return 0;
-//
-//}
+int main() {
+	vector<int> vec;
+	vec = init_taxi_io();
+	int ret = solve_taxi(vec);
+	cout << ret;
+	getchar();
+	getchar();
+	return 0;
+
+}

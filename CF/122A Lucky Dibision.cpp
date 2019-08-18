@@ -26,15 +26,14 @@ int is_likelylucy(int number,vector<int> set) {
 	return -1;
 }
 
-//int main() {
-//	int tmp;
-//	int val;
-//	cin >> val;
-//	if (val == 1) { cout << "NO"; return 0; }
-//	tmp = is_luckynumber(val);
-//	if (0 == tmp) cout << "YES";
-//	else if (0 == is_likelylucy(val, luckyset()))cout << "YES";
-//	else cout << "NO";
-//	getchar();
-//	return 0;
-//}
+int main() {
+	int tmp;
+	int val;
+	cin >> val;
+	if (val == 1) { cout << "NO"; return 0; }
+	tmp = is_luckynumber(val);
+	if (0 == tmp) cout << "YES";
+	else if (0 == is_likelylucy(val, luckyset()))cout << "YES";
+	else cout << "NO";
+	return 0;
+}

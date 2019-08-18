@@ -10,18 +10,17 @@ int plus_or_minus(string s) {
 		len--;
 	} return 0;
 }
-//int main() {
-//	int round;
-//	cin >> round;
-//	int ret = 0;
-//	round += 1;
-//	while (round) {
-//		string s = "";
-//		getline(cin, s);
-//		ret += plus_or_minus(s);
-//		round--;
-//	}
-//	cout << ret;
-//	getchar();
-//	getchar();
-//}
+int main() {
+	int round;
+	cin >> round;
+	int ret = 0;
+	round += 1;
+	while (round) {
+		string s = "";
+		getline(cin, s);
+		ret += plus_or_minus(s);
+		round--;
+	}
+	cout << ret;
+	return 0;
+}

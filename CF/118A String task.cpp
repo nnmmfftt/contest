@@ -27,14 +27,12 @@ string & insert_consonet(string & s) {
 		++i;
 	}return s;
 }
-//int main() {
-//	string s;
-//	cin >> s;
-//	s = tolower(s);
-//	s = remove_vowel(s);
-//	s = insert_consonet(s);
-//	cout << s << endl;
-//	getchar();
-//	getchar();
-//	return 0;
-//}
+int main() {
+	string s;
+	cin >> s;
+	s = tolower(s);
+	s = remove_vowel(s);
+	s = insert_consonet(s);
+	cout << s << endl;
+	return 0;
+}

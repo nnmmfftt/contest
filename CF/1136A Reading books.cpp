@@ -10,23 +10,23 @@ int handler(vector<vector<int>>& vec, int pos) {
 		}
 	}
 }
-//int main() {
-//	int chapter;
-//	vector<vector<int>> vec;
-//	vector<int> tmp;
-//	cin >> chapter;
-//	while (chapter--) {
-//		int first;
-//		int second;
-//		cin >> first >> second;
-//		tmp.push_back(first);
-//		tmp.push_back(second);
-//		vec.push_back(tmp);
-//		tmp.clear();
-//	}
-//	int now;
-//	cin >> now;
-//	int ret = handler(vec, now);
-//	cout << ret;
-//	return ret;
-//}
+int main() {
+	int chapter;
+	vector<vector<int>> vec;
+	vector<int> tmp;
+	cin >> chapter;
+	while (chapter--) {
+		int first;
+		int second;
+		cin >> first >> second;
+		tmp.push_back(first);
+		tmp.push_back(second);
+		vec.push_back(tmp);
+		tmp.clear();
+	}
+	int now;
+	cin >> now;
+	int ret = handler(vec, now);
+	cout << ret;
+	return ret;
+}

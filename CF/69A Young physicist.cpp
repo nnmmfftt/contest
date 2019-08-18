@@ -27,10 +27,10 @@ int is_xyx0(vector<int>& vec) {
 	if (x == 0 && y == 0 && z == 0) return 0;
 	else return -1;
 }
-//int main() {
-//	vector<int> t = s69a_io();
-//
-//	int val = is_xyx0(t);
-//	if (val) pn; else py;
-//	return 0;
-//}
+int main() {
+	vector<int> t = s69a_io();
+
+	int val = is_xyx0(t);
+	if (val) pn; else py;
+	return 0;
+}
