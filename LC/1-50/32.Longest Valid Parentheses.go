@@ -1,3 +1,8 @@
+/**
+ * "()(()" the valid longest parentheses is 2
+ * because of string divided by '(' at positon 3
+ */
+/*--------------------1st--------------------*/
 func isValid(s string)bool{
     var valid []rune
     for _,i:= range []rune(s){
@@ -31,16 +36,16 @@ func longestValidParentheses(s string) int {
     return maxLen
 }
 
-
+/*--------------------2nd--------------------*/
 func longestValidParentheses(s string) int {
     // dynamic version:
     // dp records every possibilities
     // notes:
-    // check max substring length to current position 
+    // check max substring length to current position
     // ----------------------------------------------
     // only check the string ended by ")", the "("
-    // position is dp[i] = 0. 
-    // 1. 
+    // position is dp[i] = 0.
+    // 1.
     // dp[i-1] = '('
     // "()" is a valid condition
     // dp[i] = dp[i-2] + 2
@@ -76,27 +81,9 @@ func longestValidParentheses(s string) int {
     return maxRet
 }
 
-class Solution:
-    def longestValidParentheses(self, s):
-        """
-        :type s: str
-        :rtype: int
-        """
-        stack = [0]
-        longest = 0
-        
-        for c in s:
-            if c == "(":
-                stack.append(0)
-            else:
-                if len(stack) > 1:
-                    val = stack.pop()
-                    stack[-1] += val + 2
-                    longest = max(longest, stack[-1])
-                else:
-                    stack = [0]
-        return longest
-// also we can modify method 1
+
+/*--------------------3rd--------------------*/
+// also modify method 1
 // traverse all elements & check validation
 func max(a, b int)int{
     if a > b{
@@ -106,19 +93,58 @@ func max(a, b int)int{
     }
 }
 func longestValidParentheses(s string) int {
-    stack := make([]int)
+    stack := make([]int,1)
     longest := 0
     for _, c:= range []rune(s){
         if c == '('{
             stack = append(stack, 0)
         }else{
             if len(stack) >1{
-                val = stack[len(stack)-1]
-                stack[len(stack)-1] +=2
+                val := stack[len(stack)-1]
+                stack[len(stack)-1] = val + 2
                 longest = max(longest,stack[len(stack)-1])
             }else{
-                stack = {0}
+                stack = []int{0}
             }
         }
     }
+    return longest
+}
+
+/*--------------------4nd--------------------*/
+func max(a, b int)int{
+    if a > b{
+        return a
+    }else{
+        return b
+    }
+}
+func longestValidParentheses(s string) int {
+    var left, right, longest int
+    for _,i:= range s{
+        if i == '('{
+            left++
+        }else{
+            right++
+        }
+        if left == right {
+            longest = max(longest, 2*right)
+        }else if right >= left{
+            right, left = 0, 0
+        }
+    }
+    left, right = 0, 0
+    for i := len(s)-1; i >-1; i--{
+        if s[i] == '('{
+            left++
+        }else{
+            right++
+        }
+        if left == right {
+            longest = max(longest, 2*left)
+        }else if left >= right{
+            left, right = 0, 0
+        }
+    }
+    return longest
 }
