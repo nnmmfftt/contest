@@ -1,0 +1,8 @@
+# Write your MySQL query statement below
+select p.FirstName,p.LastName,a.City,a.State
+from
+address a right join person p
+# person p left join address a
+# 题目中要求无论 person是否有地址信息，都需要找出person的信息，因此考虑 left join 与 right join 
+on
+p.PersonID=a.PersonID
