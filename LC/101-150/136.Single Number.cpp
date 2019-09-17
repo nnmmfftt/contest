@@ -23,8 +23,7 @@ static auto _ = []()
     std::ios::sync_with_stdio(false);
     std::cin.tie(0);
     return 0;
-}
-();
+}();
 class Solution {
 public:
     int singleNumber(vector<int>& nums) {
